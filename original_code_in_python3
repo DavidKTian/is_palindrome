@@ -1,0 +1,44 @@
+def is_palindrome():
+    print("Please write any word. No numbers, please. Write \"done\" when finished.")
+    while True:
+      string=input("")
+      if string=="done":
+        break
+      if string.isnumeric()==True:
+        print("Please write only words, no numbers.")
+        continue
+      elif any(char.isdigit() for char in string)==True:
+        print("Your input has a digit. Please write only words.")
+        continue 
+      else: 
+        string1=string.lower()
+        length_of_word=len(string1)
+        if length_of_word==1:
+          print("A single letter cannot be a palindrome. Try again")
+          continue
+        if length_of_word%2==0:
+          index1=length_of_word/2
+          index1=int(index1)
+          first_half=string1[0:index1]
+          second_half=string1[index1:length_of_word]
+          if first_half==second_half[::-1]:
+            print("Congratulations! Your word, \"%s\", is a palindrome!"%string)
+          elif first_half!=second_half[::-1]:
+            print("Sorry, your word, \"%s\", is not a palindrome."%string)
+        elif length_of_word%2!=0:
+          index1=(length_of_word-1)/2
+          index1=int(index1)
+          first_half=string1[0:index1]
+          second_half=string1[index1+1:length_of_word]
+          if first_half==second_half[::-1]:
+            print("Congratulations! Your word, \"%s\", is a palindrome!"%string)
+          elif first_half!=second_half[::-1]:
+            print("Sorry, your word, \"%s\", is not a palindrome."%string)
+
+def main():
+  is_palindrome()
+
+if __name__=="__main__":
+  main()
+
+print("Thank you for using my function.")
